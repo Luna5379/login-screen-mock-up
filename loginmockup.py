@@ -2,20 +2,17 @@ import pygame, sys
 from pygame.constants import QUIT
 from pygame.locals import *
 
-width = 360
-height = 740
+width = 393
+height = 852
 caption = "login"
-BLUE = (0, 0, 255)
-RED = (255, 0, 0)
-YELLOW = (255, 255, 0)
-GREEN = (0, 255, 0)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-bgColour = (19,31,36)
-empytTextBoxColour = (32,47,54)
-emptyTextColor = (149,161,168)
+bgColour = (22,19,36)
+empytTextBoxColour = (38,32,54)
+emptyTextColor = (189,174,232)
 mySurface = None
 sysfont = pygame.font.get_default_font()
+fonts = pygame.font.get_fonts()
+for i in range(len(fonts)):
+  print(fonts[i])
 
 def initialise(windowWidth, windowHeight, windowName, windowColour):
   global mySurface
@@ -26,9 +23,15 @@ def initialise(windowWidth, windowHeight, windowName, windowColour):
 
 def render():
   pygame.draw.rect(mySurface, empytTextBoxColour, (55,100,250,40))
-  boxtext1 = pygame.font.SysFont('enter email', 60)
-  box1 = boxtext1.render('enter email', True, emptyTextColor)
+  boxtext1 = pygame.font.SysFont('dejavusans', 35)
+  box1 = boxtext1.render('Email', True, emptyTextColor)
   mySurface.blit(box1, (65,100))
+
+  pygame.draw.rect(mySurface, empytTextBoxColour, (55,160,250,40))
+  boxtext2 = pygame.font.SysFont('dejavusans', 35)
+  box2 = boxtext2.render('Password', True, emptyTextColor)
+  mySurface.blit(box2, (65,160))
+  
   pygame.display.update()
 
 initialise(width, height, caption, bgColour)
