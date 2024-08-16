@@ -11,8 +11,11 @@ YELLOW = (255, 255, 0)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-
+bgColour = (19,31,36)
+empytTextBoxColour = (32,47,54)
+emptyTextColor = (149,161,168)
 mySurface = None
+sysfont = pygame.font.get_default_font()
 
 def initialise(windowWidth, windowHeight, windowName, windowColour):
   global mySurface
@@ -22,18 +25,18 @@ def initialise(windowWidth, windowHeight, windowName, windowColour):
   mySurface.fill(color=windowColour)
 
 def render():
-  pygame.draw.rect(mySurface, RED, (10,10,15,15))
-  pygame.draw.polygon(mySurface, YELLOW, ((146,0), (291, 106), (236, 277), (56, 277), (0, 106)))
-  pygame.draw.line(mySurface, GREEN, (60, 60), (120, 60), 20)
-  pygame.draw.circle(mySurface, BLACK, (300, 50), 20, 0)
-  pygame.draw.ellipse(mySurface, WHITE, (300, 250, 40, 80), 0)
+  pygame.draw.rect(mySurface, empytTextBoxColour, (55,100,250,40))
+  boxtext1 = pygame.font.SysFont('enter email', 60)
+  box1 = boxtext1.render('enter email', True, emptyTextColor)
+  mySurface.blit(box1, (65,100))
   pygame.display.update()
 
-initialise(width, height, caption, BLUE)
+initialise(width, height, caption, bgColour)
 while True:
   render()
   for event in pygame.event.get():
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
+
 
